@@ -28,7 +28,6 @@ const Signup: NextPage = () => {
             onSubmit={async (values) => {
               try {
                 const { token } = await signupMutation.mutateAsync(values);
-                debugger;
                 authenticate(token);
               } catch (err) {
                 router.push('/login')

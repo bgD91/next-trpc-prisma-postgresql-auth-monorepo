@@ -7,40 +7,36 @@ import Link from "next/link";
 import MainLayout, { Card } from "../layouts/MainLayout";
 const Home: NextPage = () => {
   const { user } = useAuth();
-  const isLoggedIn = !!user;
 
   return (
     <MainLayout>
       <Card>
         <>
           <div className="text-8xl font-extrabold text-center mb-10">
-            Welcome to{" "}
+            The starter{" "}
             <span
               className="text-transparent bg-clip-text bg-gradient-to-br from-purple-400 via-pink-500 to-red-600"
               id="main"
             >
-              Bogdan Calin's
+              template
             </span>{" "}
-            insanely fast stack
+            you were waiting for
           </div>
           <p className="mb-20 tracking-widest text-gray-400 text-2xl text-center">
             Next.JS + Tailwind CSS + TRPC.io + Prisma ORM + PostgreSQL
           </p>
           <div className="flex justify-center">
-            {/* <a
+            <a
               href="https://github.com/mikealche/next-node-auth-monorepo"
               className="py-5 px-40 border border-red-300 transition-all rounded-lg tracking-wider mr-10 "
             >
               GitHub
-            </a> */}
-            { !isLoggedIn ? 
+            </a>
             <Link href="/signup" passHref>
-              <button onClick={() =>console.log(user)} className="py-5 px-40 border bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 transition-all rounded-lg text-white tracking-wider ">
+              <button className="py-5 px-40 border bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 transition-all rounded-lg text-white tracking-wider ">
                 Sign up
               </button>
-            </Link> : 
-            "You are logged in. You can write your TODO's to the database :)"
-            }
+            </Link>
           </div>
         </>
       </Card>

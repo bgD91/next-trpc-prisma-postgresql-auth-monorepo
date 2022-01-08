@@ -7,13 +7,10 @@ import Button from "../components/Button";
 import { useAuth } from "../contexts/auth";
 import { useErrorNotificationToast } from "../hooks/useErrorNotificationToast";
 import MainLayout, { Card } from "../layouts/MainLayout";
-import { useRouter } from "next/dist/client/router";
-
 
 const Signup: NextPage = () => {
   const signupMutation = trpc.useMutation("auth/signup");
   const { authenticate } = useAuth();
-  const router = useRouter();
 
   console.log(signupMutation.error?.message);
   useErrorNotificationToast(signupMutation.error?.message);
@@ -28,10 +25,9 @@ const Signup: NextPage = () => {
             onSubmit={async (values) => {
               try {
                 const { token } = await signupMutation.mutateAsync(values);
-                debugger;
                 authenticate(token);
               } catch (err) {
-                router.push('/login')
+                console.log(err)
               }
             }}
           >

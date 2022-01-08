@@ -9,6 +9,8 @@ const Home: NextPage = () => {
   const { user } = useAuth();
   const isLoggedIn = !!user;
 
+  console.log('is logged in?: ', isLoggedIn);
+
   return (
     <MainLayout>
       <Card>
@@ -33,14 +35,11 @@ const Home: NextPage = () => {
             >
               GitHub
             </a> */}
-            { !isLoggedIn ? 
-            <Link href="/signup" passHref>
+            { isLoggedIn ? <Link href="/signup" passHref>
               <button onClick={() =>console.log(user)} className="py-5 px-40 border bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 transition-all rounded-lg text-white tracking-wider ">
                 Sign up
               </button>
-            </Link> : 
-            "You are logged in. You can write your TODO's to the database :)"
-            }
+            </Link> : "User is fully logged in"}
           </div>
         </>
       </Card>

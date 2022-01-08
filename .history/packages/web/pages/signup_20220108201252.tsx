@@ -28,10 +28,11 @@ const Signup: NextPage = () => {
             onSubmit={async (values) => {
               try {
                 const { token } = await signupMutation.mutateAsync(values);
-                debugger;
                 authenticate(token);
               } catch (err) {
-                router.push('/login')
+                if (err === "The email is already in use") {
+                  router.push('/login')
+                }
               }
             }}
           >

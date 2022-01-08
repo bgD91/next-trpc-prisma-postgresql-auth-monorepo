@@ -7,7 +7,6 @@ import Link from "next/link";
 import MainLayout, { Card } from "../layouts/MainLayout";
 const Home: NextPage = () => {
   const { user } = useAuth();
-  const isLoggedIn = !!user;
 
   return (
     <MainLayout>
@@ -33,14 +32,11 @@ const Home: NextPage = () => {
             >
               GitHub
             </a> */}
-            { !isLoggedIn ? 
             <Link href="/signup" passHref>
               <button onClick={() =>console.log(user)} className="py-5 px-40 border bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 transition-all rounded-lg text-white tracking-wider ">
                 Sign up
               </button>
-            </Link> : 
-            "You are logged in. You can write your TODO's to the database :)"
-            }
+            </Link>
           </div>
         </>
       </Card>
